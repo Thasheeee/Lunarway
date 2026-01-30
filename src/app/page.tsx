@@ -56,7 +56,7 @@ export default function Home() {
 
       {/*Services*/}
       <section className="w-full md:content-center max-w-[300rem] mx-auto"> 
-        <div className="max-w-4/6 mx-auto px-3 md:px-16 pt-5 pb-20">
+        <div className="max-w-4/6 mx-auto px-3 md:px-16 pt-5 pb-14">
 
           <div className="flex items-stretch flex-col md:flex-row justify-between gap-10 mb-12">
             
