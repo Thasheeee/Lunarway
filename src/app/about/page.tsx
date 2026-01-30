@@ -11,7 +11,7 @@ export default function About(){
             <JourneySection/>
 
             {/* Steps */}
-            <section className="relative bg-[#f2f2f2] w-full py-16 md:py-40">
+            <section className="relative bg-[#f2f2f2] w-full md:pt-14 pb-24">
                 <div className="max-w-4/6 mx-auto px-3 md:px-16">
                     {/* Header */}
                     <div className="grid lg:grid-cols-2 gap-12 mb-20">
@@ -20,7 +20,7 @@ export default function About(){
                       Every Journey
                     </h2>
         
-                    <p className="text-gray-600 max-w-md lg:ml-auto text-sm md:text-base text-center md:text-left">
+                    <p className="text-gray-600 max-w-md lg:ml-auto text-base md:text-xl text-center md:text-justify self-end">
                       We focus on understanding your needs and planning travel experiences that feel smooth and stress-free.
                     </p>
                     </div>

@@ -24,7 +24,7 @@ interface TourCardProps {
 const TourCard: React.FC<TourCardProps> = ({ tour }) => {
   return (
     <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg ">
-      <div className="relative h-[25rem] md:h-[27rem] overflow-hidden">
+      <div className="relative h-[30rem] overflow-hidden">
         <img
           src={tour.image}
           alt={tour.imageAlt}
@@ -111,7 +111,7 @@ const tourPackages: TourPackage[] = [
 
 const TourPackages: React.FC = () => {
   return (
-    <section className=" w-full max-w-4/6 mx-auto px-3 md:px-16 py-20 md:h-[100vh]">
+    <section className=" w-full max-w-4/6 mx-auto px-3 md:px-16 py-14">
       <div className="flex flex-col">
         <div className="mb-3 w-2/3 mx-auto"> 
           <h1 className="text-xl md:text-4xl font-bold text-black md:leading-[1.2] text-center mx-auto">
@@ -124,7 +124,7 @@ const TourPackages: React.FC = () => {
           </span>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 h-auto">
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 h-auto">
         {tourPackages.map((tour) => (
           <TourCard key={tour.id} tour={tour} />
         ))}
@@ -159,13 +159,13 @@ export default function Tours(){
             </p>
           </div>
 
-          <div className="mt-10 rounded-2xl overflow-hidden">
+          <div className="mt-5 rounded-2xl overflow-hidden">
             <Image
               src="/tours-cover.webp"
               alt="Aerial beach view"
               width={1400}
               height={800}
-              className="w-full h-[250px] sm:h-[370px] md:h-[470px] object-cover"
+              className="w-full h-[15rem] md:h-[70%] object-cover"
               priority
             />
           </div>
@@ -173,7 +173,7 @@ export default function Tours(){
       </section>
 
 
-      <div className='mb-10'>
+      <div className='mb-12'>
       <TourPackages/>
       </div>
 

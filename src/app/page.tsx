@@ -13,8 +13,8 @@ export default function Home() {
       <Navbar/>
 
       {/* Cover image */}
-      <section className="h-screen flex items-center justify-center mt-10 md:mt-20 font-sans">
-        <div className="relative w-full max-w-4/6 h-[90vh] px-3 md:px-16">
+      <section className="h-screen flex items-center justify-center mt-10 font-sans max-w-[300rem] mx-auto">
+        <div className="relative w-full max-w-4/6 h-[85%] px-3 md:px-16">
           
           <div className="relative w-full h-full overflow-hidden rounded-md">
             <Image
@@ -28,20 +28,20 @@ export default function Home() {
             <div className="relative z-10 h-full flex items-end"> 
               <div className="w-full px-16 grid md:grid-cols-2 gap-8">
                 
-                <h1 className="text-white text-4xl md:text-7xl font-medium tracking-wide mb-7 md:mb-12">
+                <h1 className="text-white text-2xl sm:text-4xl md:text-7xl font-medium tracking-wide mb-7 md:mb-12">
                   Travel Begins <br />
                   With The Right <br />
                   Journey.
                 </h1>
 
                 <div className="text-white max-w-lg ml-auto pt-0 md:pt-10">
-                  <span className="text-white/90 text-lg md:text-xl pr-5">
+                  <span className="text-white/90 text-base sm:text-lg md:text-xl pr-5">
                     From short local escapes to exciting international adventures,
                     we create travel experiences that are smooth, reliable, and memorable.
                   </span><br/>
 
                   <Link href="/tours">
-                    <button className="bg-white text-black px-6 py-3 my-3 rounded-md font-medium">
+                    <button className="bg-white text-black px-4 py-2 md:px-6 md:py-3 my-3 rounded-md font-medium">
                       Get Started
                     </button>
                   </Link>
@@ -55,8 +55,8 @@ export default function Home() {
       </section>
 
       {/*Services*/}
-      <section className="w-full md:content-center pb-20 md:pb-0 sm:h-[120vh] md:h-[100vh]"> 
-        <div className="max-w-4/6 mx-auto px-3 md:px-16">
+      <section className="w-full md:content-center max-w-[300rem] mx-auto"> 
+        <div className="max-w-4/6 mx-auto px-3 md:px-16 pt-5 pb-20">
 
           <div className="flex items-stretch flex-col md:flex-row justify-between gap-10 mb-12">
             
@@ -68,7 +68,7 @@ export default function Home() {
               Travel
             </div>
 
-            <span className="text-[#909090] self-end w-full md:w-3/6 md:ml-20 md:py-5 text-base md:text-xl text-center md:text-left">
+            <span className="text-[#909090] self-end w-full md:w-3/6 md:ml-20  text-base md:text-xl text-center md:text-justify">
               We provide complete planning and on-ground support for well-organized
               tours across Sri Lanka and overseas destinations, so you can travel
               with confidence.

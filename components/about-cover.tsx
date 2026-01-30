@@ -12,7 +12,7 @@ function JourneySection() {
             Your Journey, <br /> Our Commitment
           </h2>
 
-          <span className="text-[#909090] self-end w-full md:w-3/6 md:ml-20 md:py-5 text-base md:text-xl text-left">
+          <span className="text-[#909090] self-end w-full md:w-3/6 md:ml-20 text-base md:text-xl text-left md:text-justify">
             We plan travel experiences with care, clarity, and attention to
             detail, so every journey feels effortless and memorable.
           </span>

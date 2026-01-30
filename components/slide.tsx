@@ -49,7 +49,7 @@ export default function Destinations() {
   };
 
   return (
-    <section className="w-full bg-[#F8F8F6] md:h-[100vh] px-4 md:px-16 py-10 flex items-center">
+    <section className="w-full max-w-[300rem] mx-auto bg-[#F8F8F6] px-4 md:px-16 py-14 flex items-center">
       <div className="mx-auto w-full overflow-hidden">
 
         {/* SLIDER */}
@@ -61,21 +61,21 @@ export default function Destinations() {
           {slides.map((slide, idx) => (
             <div
               key={idx}
-              className="min-w-full snap-center grid grid-cols-1 md:grid-cols-[5.2fr_4.9fr_4.2fr] gap-10 md:gap-0 items-start"
+              className="min-w-full snap-center grid grid-cols-1 md:grid-cols-[30%_40%_30%] gap-10 md:gap-0 items-start"
             >
               {/* LEFT TEXT */}
               <div className="space-y-4 md:space-y-6 text-center md:text-left">
                 <h2 className="text-xl md:text-5xl font-bold text-black leading-snug">
                   Places We <br /> Take You <br /> Worldwide
                 </h2>
-                <p className="text-gray-500 text-sm md:text-xl md:w-5/6 mx-auto md:mx-0">
+                <p className="text-gray-500 text-sm md:text-2xl md:w-5/6 mx-auto md:mx-0">
                   Discover destinations chosen for their experiences, culture, and unforgettable moments, both close to home and across the world.
                 </p>
               </div>
 
               {/* CENTER IMAGE */}
               <div className="flex justify-center">
-                <div className="h-[400px] w-full px-10 md:px-0 md:h-[520px] md:w-[420px] rounded-lg overflow-hidden shadow-md relative">
+                <div className="h-[400px] w-full px-10 md:px-0 md:h-[90vh] max-h-[570] md:w-[80%] rounded-lg overflow-hidden shadow-md relative">
                   <Image
                     src={slide.images[0]}
                     alt={slide.title}
@@ -88,8 +88,10 @@ export default function Destinations() {
               </div>
 
               {/* RIGHT COLUMN */}
-              <div className="flex flex-col items-center md:items-start relative space-y-6">
-                <div className="bg-white rounded-xl shadow-sm py-6 px-4 w-full">
+              <div className="flex flex-col items-stretch h-[400px] md:h-[570px] relative">
+                
+                {/* TOP CARD */}
+                <div className="bg-white rounded-xl shadow-sm py-6 px-4 w-full mb-6 md:py-10">
                   <h3 className="text-lg md:text-xl font-semibold text-black">
                     {slide.title}
                   </h3>
@@ -98,7 +100,8 @@ export default function Destinations() {
                   </p>
                 </div>
 
-                <div className="w-[200px] md:w-[230px] rounded-xl overflow-hidden shadow-md pt-4">
+                {/* BOTTOM IMAGE */}
+                <div className="mt-auto w-[200px] md:w-[230px] h-[55%] rounded-xl self-start overflow-hidden shadow-md">
                   <img
                     src={slide.images[1]}
                     alt={`${slide.title} small`}
@@ -106,9 +109,10 @@ export default function Destinations() {
                   />
                 </div>
 
+                {/* LINK */}
                 <Link
                   href={slide.url}
-                  className="text-lg md:text-xl md:absolute md:bottom-0 md:right-0 text-black font-medium hover:underline whitespace-nowrap"
+                  className="absolute bottom-0 right-0 text-lg md:text-xl text-black font-medium hover:underline whitespace-nowrap"
                 >
                   <u>View Details →</u>
                 </Link>
@@ -118,7 +122,7 @@ export default function Destinations() {
         </div>
 
         {/* INDICATORS */}
-        <div className="flex justify-center gap-3 mt-4">
+        <div className="flex justify-center gap-3 mt-2">
           {slides.map((_, i) => (
             <button
               key={i}

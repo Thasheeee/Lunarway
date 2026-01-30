@@ -19,7 +19,7 @@ interface TourCardProps {
 const TourCard: React.FC<TourCardProps> = ({ tour }) => {
   return (
     <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg">
-      <div className="relative h-[27rem] overflow-hidden">
+      <div className="relative h-[30rem] overflow-hidden">
         <Image
           src={tour.image}
           alt={tour.imageAlt}
@@ -105,21 +105,21 @@ const tourPackages: TourPackage[] = [
 
 const TourPackages: React.FC = () => {
   return (
-    <section className="w-full mx-auto px-4 md:px-16 py-20">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end">
+    <section className="w-full mx-auto px-4 md:px-16 py-14 max-w-[300rem]">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 justify-between">
         <div className="space-y-3 md:space-y-6">
           <h1 className="text-xl md:text-5xl font-bold text-black leading-tight text-center md:text-left">
             Explore Our Most <br /> Popular Tour <br /> Packages
           </h1>
         </div>
 
-        <p className="text-[#909090] text-base md:text-xl text-center md:text-left">
+        <p className=" text-[#909090] text-base md:text-xl self-end text-center md:text-justify">
           Explore our carefully planned local and international tour packages,
           designed to offer comfort, value, and memorable travel experiences.
         </p>
       </div>
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
         {tourPackages.map((tour) => (
           <TourCard key={tour.id} tour={tour} />
         ))}

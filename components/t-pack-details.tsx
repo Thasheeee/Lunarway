@@ -2,7 +2,7 @@ import Image from "next/image";
 
 export default function PackageDetails() {
   return (
-    <section className="py-12 bg-white mx-auto w-full max-w-4/6 px-3 md:px-16">
+    <section className="py-6 bg-white mx-auto w-full max-w-4/6 px-3 md:px-16">
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
 
         {/* LEFT CONTENT */}

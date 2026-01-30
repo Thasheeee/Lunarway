@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function WhyTrustUs() {
   return (
-    <section className="w-full bg-[#1b263b] py-20 mt-28">
-      <div className="max-w-7xl mx-auto px-3 md:px-16">
+    <section className="w-full bg-[#1b263b] py-14 max-w-[300rem] mx-auto">
+      <div className=" px-3 md:px-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-0"> 
           
           {/* LEFT IMAGE */}
