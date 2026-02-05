@@ -11,7 +11,7 @@ export default function About(){
             <JourneySection/>
 
             {/* Steps */}
-            <section className="relative bg-[#f2f2f2] w-full md:pt-14 pb-24">
+            <section className="relative bg-[#f2f2f2] w-full pt-14 pb-24">
                 <div className="max-w-4/6 mx-auto px-3 md:px-16">
                     {/* Header */}
                     <div className="grid lg:grid-cols-2 gap-12 mb-20">

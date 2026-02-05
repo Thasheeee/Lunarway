@@ -1,6 +1,7 @@
 import React from "react";
 import Link from "next/link";
 import Image from "next/image";
+import { destinations } from "@/app/lib/destinations";
 
 interface TourPackage {
   id: number;
@@ -18,6 +19,7 @@ interface TourCardProps {
 
 const TourCard: React.FC<TourCardProps> = ({ tour }) => {
   return (
+
     <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg">
       <div className="relative h-[30rem] overflow-hidden">
         <Image
@@ -46,32 +48,40 @@ const TourCard: React.FC<TourCardProps> = ({ tour }) => {
               <p className="text-sm opacity-90">{tour.duration}</p>
             </div>
 
-            <Link
-              href={`/${tour.slug}`}
-              className="inline-flex items-center gap-2 px-3 md:px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-xs md:text-base font-medium hover:bg-white/30 group/btn"
-            >
-              Learn More
-              <svg
-                className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-                aria-hidden="true"
+          
+              <Link href={tour.slug}
+                className="inline-flex items-center gap-2 px-3 md:px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-xs md:text-base font-medium hover:bg-white/30 group/btn"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M9 5l7 7-7 7"
-                />
-              </svg>
-            </Link>
+                Learn More
+                <svg
+                  className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M9 5l7 7-7 7"
+                  />
+                </svg>
+              </Link>
+          
+
+
+
           </div>
         </div>
       </div>
     </div>
+
+
+
   );
 };
+
 
 const tourPackages: TourPackage[] = [
   {
@@ -81,7 +91,7 @@ const tourPackages: TourPackage[] = [
     duration: "6 days",
     image: "/malaysia-pack.webp",
     imageAlt: "Malaysia mosque architecture",
-    slug: "malaysia",
+    slug: "destination/malaysia",
   },
   {
     id: 2,
@@ -90,7 +100,7 @@ const tourPackages: TourPackage[] = [
     duration: "6 days",
     image: "/thailand-pack.webp",
     imageAlt: "Thailand travel scenery",
-    slug: "thailand",
+    slug: "destination/thailand",
   },
   {
     id: 3,
@@ -99,7 +109,7 @@ const tourPackages: TourPackage[] = [
     duration: "6 days",
     image: "/dubai-pack.webp",
     imageAlt: "Dubai skyline cityscape",
-    slug: "dubai",
+    slug: "destination/dubai",
   },
 ];
 

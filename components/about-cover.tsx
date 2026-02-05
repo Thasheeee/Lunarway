@@ -7,7 +7,7 @@ function JourneySection() {
     <div className="max-w-4/6 mx-auto px-3 md:px-16 ">
 
         {/* Top Row */}
-        <div className="md:gap-20 gap-10 flex items-stretch flex-col md:flex-row justify-between">
+        <div className="md:gap-20 gap-5 flex items-stretch flex-col md:flex-row justify-between">
           <h2 className="text-2xl md:text-6xl text-black font-semibold leading-tight text-left ">
             Your Journey, <br /> Our Commitment
           </h2>
@@ -19,7 +19,7 @@ function JourneySection() {
         </div>
 
         {/* Image Grid */}
-        <div className="mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
+        <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
 
           {/* Large Image */}
           <div className="md:col-span-2 relative h-[320px] md:h-[600px] rounded-xl overflow-hidden">

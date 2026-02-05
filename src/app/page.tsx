@@ -1,33 +1,36 @@
-import Image from "next/image"
-import Navbar from "../../components/navbar"
-import Destinations from "../../components/slide"
-import TourCard from "../../components/pack-cards"
-import WhyTrustUs from "../../components/trust"
-import Foot from "../../components/footer"
-import Steps from "../../components/trip-steps"
-import Link from "next/link"
+import Image from "next/image";
+import Navbar from "../../components/navbar";
+import Destinations from "../../components/slide";
+import TourCard from "../../components/pack-cards";
+import WhyTrustUs from "../../components/trust";
+import Foot from "../../components/footer";
+import Steps from "../../components/trip-steps";
+import Link from "next/link";
+
+
+
 
 export default function Home() {
   return (
     <main>
-      <Navbar/>
+      <Navbar />
 
       {/* Cover image */}
       <section className="h-screen flex items-center justify-center mt-10 font-sans max-w-[300rem] mx-auto">
         <div className="relative w-full max-w-4/6 h-[85%] px-3 md:px-16">
-          
+
           <div className="relative w-full h-full overflow-hidden rounded-md">
             <Image
               src="/home-cover.webp"
-              alt="Travel background"
+              alt="Travel around"
               fill
               priority
               className="object-cover"
             />
 
-            <div className="relative z-10 h-full flex items-end"> 
+            <div className="relative z-10 h-full flex items-end">
               <div className="w-full px-16 grid md:grid-cols-2 gap-8">
-                
+
                 <h1 className="text-white text-2xl sm:text-4xl md:text-7xl font-medium tracking-wide mb-7 md:mb-12">
                   Travel Begins <br />
                   With The Right <br />
@@ -38,7 +41,7 @@ export default function Home() {
                   <span className="text-white/90 text-base sm:text-lg md:text-xl pr-5">
                     From short local escapes to exciting international adventures,
                     we create travel experiences that are smooth, reliable, and memorable.
-                  </span><br/>
+                  </span><br />
 
                   <Link href="/tours">
                     <button className="bg-white text-black px-4 py-2 md:px-6 md:py-3 my-3 rounded-md font-medium">
@@ -55,16 +58,16 @@ export default function Home() {
       </section>
 
       {/*Services*/}
-      <section className="w-full md:content-center max-w-[300rem] mx-auto"> 
-        <div className="max-w-4/6 mx-auto px-3 md:px-16 pt-5 pb-14">
+      <section className="w-full md:content-center max-w-[300rem] mx-auto">
+        <div className="max-w-4/6 mx-auto px-3 md:px-16 pb-14">
 
           <div className="flex items-stretch flex-col md:flex-row justify-between gap-10 mb-12">
-            
+
             <div className="text-xl md:text-5xl font-bold w-full md:w-3/6 text-black text-center md:text-left">
               Your Trusted Partner
-              <div className="h-1 md:h-5 bg-transparent"/>
+              <div className="h-1 md:h-5 bg-transparent" />
               For Local & Global
-              <div className="h-1 md:h-5 bg-transparent"/>
+              <div className="h-1 md:h-5 bg-transparent" />
               Travel
             </div>
 
@@ -79,7 +82,7 @@ export default function Home() {
 
             <div className="flex-1">
               <span className="text-2xl mb-4 flex md:justify-start justify-center">
-                <Image 
+                <Image
                   src="/airplane.svg"
                   width={35}
                   height={35}
@@ -96,7 +99,7 @@ export default function Home() {
 
             <div className="flex-1">
               <span className="text-2xl mb-4 flex md:justify-start justify-center">
-              <Image 
+                <Image
                   src="/hotel.svg"
                   width={35}
                   height={35}
@@ -113,7 +116,7 @@ export default function Home() {
 
             <div className="flex-1">
               <span className="text-2xl mb-4 flex md:justify-start justify-center">
-              <Image 
+                <Image
                   src="/suitcase.svg"
                   width={35}
                   height={35}
@@ -130,7 +133,7 @@ export default function Home() {
 
             <div className="flex-1">
               <span className="text-2xl mb-4 flex md:justify-start justify-center">
-              <Image 
+                <Image
                   src="/passport.svg"
                   width={35}
                   height={35}
@@ -149,13 +152,13 @@ export default function Home() {
         </div>
       </section>
 
-      <Destinations/>
+      <Destinations />
 
-      <TourCard/>
+      <TourCard />
 
-      <WhyTrustUs/>
+      <WhyTrustUs />
 
-      <Steps/>
+      <Steps />
 
       {/* Comments */}
       <section className="w-full bg-white pt-10 pb-10 md:pb-0 md:h-[100%]">
@@ -197,7 +200,7 @@ export default function Home() {
         </div>
       </section>
 
-      <Foot/>
+      <Foot />
     </main>
   )
 }

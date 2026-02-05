@@ -86,7 +86,7 @@ const tourPackages: TourPackage[] = [
     duration: "6 days",
     image: "/malaysia-pack.webp",
     imageAlt: "Malaysia mosque architecture",
-    slug: "malaysia",
+    slug: "destination/malaysia",
   },
   {
     id: 2,
@@ -95,7 +95,7 @@ const tourPackages: TourPackage[] = [
     duration: "6 days",
     image: "/thailand-pack.webp",
     imageAlt: "Thailand travel",
-    slug: "thailand",
+    slug: "destination/thailand",
   },
   {
     id: 3,
@@ -104,7 +104,7 @@ const tourPackages: TourPackage[] = [
     duration: "6 days",
     image: "/dubai-pack.webp",
     imageAlt: "Dubai skyline",
-    slug: "dubai",
+    slug: "destination/dubai",
   },
 ];
 
@@ -113,7 +113,7 @@ const TourPackages: React.FC = () => {
   return (
     <section className=" w-full max-w-4/6 mx-auto px-3 md:px-16 py-14">
       <div className="flex flex-col">
-        <div className="mb-3 w-2/3 mx-auto"> 
+        <div className="my-3 w-2/3 mx-auto"> 
           <h1 className="text-xl md:text-4xl font-bold text-black md:leading-[1.2] text-center mx-auto">
             Explore Our Most Popular Tour Packages
           </h1>
@@ -173,7 +173,7 @@ export default function Tours(){
       </section>
 
 
-      <div className='mb-12'>
+      <div className='mb-0'>
       <TourPackages/>
       </div>
 
