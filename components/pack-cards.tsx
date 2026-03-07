@@ -1,141 +1,185 @@
-import React from "react";
-import Link from "next/link";
 import Image from "next/image";
-import { destinations } from "@/app/lib/destinations";
+import Link from "next/link";
 
-interface TourPackage {
-  id: number;
-  destination: string;
-  price: string;
-  duration: string;
-  image: string;
-  imageAlt: string;
-  slug: string;
-}
-
-interface TourCardProps {
-  tour: TourPackage;
-}
-
-const TourCard: React.FC<TourCardProps> = ({ tour }) => {
-  return (
-
-    <div className="group relative overflow-hidden rounded-2xl bg-white shadow-lg">
-      <div className="relative h-[30rem] overflow-hidden">
-        <Image
-          src={tour.image}
-          alt={tour.imageAlt}
-          fill
-          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-          className="object-cover"
-          priority={false}
-        />
-
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-
-        <div className="absolute top-4 left-4">
-          <span className="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-white text-gray-900 shadow-sm">
-            {tour.destination}
-          </span>
-        </div>
-
-        <div className="absolute bottom-4 left-4 right-4 text-white">
-          <div className="flex items-center justify-between gap-4">
-            <div>
-              <p className="text-lg font-semibold">
-                Starting at {tour.price}
-              </p>
-              <p className="text-sm opacity-90">{tour.duration}</p>
-            </div>
-
-          
-              <Link href={tour.slug}
-                className="inline-flex items-center gap-2 px-3 md:px-4 py-2 bg-white/20 backdrop-blur-sm rounded-lg text-xs md:text-base font-medium hover:bg-white/30 group/btn"
-              >
-                Learn More
-                <svg
-                  className="w-4 h-4 transition-transform duration-200 group-hover/btn:translate-x-1"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </Link>
-          
-
-
-
-          </div>
-        </div>
-      </div>
-    </div>
-
-
-
-  );
-};
-
-
-const tourPackages: TourPackage[] = [
+const packages = [
   {
-    id: 1,
-    destination: "Malaysia",
+    country: "Malaysia",
+    title: "Malaysia mosque architecture",
+    description:
+      "City skylines, hill resorts, Batu Caves and cultural immersion in modern Malaysia.",
+    duration: "6 days",
+    rating: "4.9",
     price: "LKR 85,000",
-    duration: "6 days",
     image: "/malaysia-pack.webp",
-    imageAlt: "Malaysia mosque architecture",
-    slug: "destination/malaysia",
+    href: "destination/malaysia",
   },
   {
-    id: 2,
-    destination: "Thailand",
+    country: "Thailand",
+    title: "Thailand travel scenery",
+    description:
+      "Temples, floating markets, nightlife, and stunning Gulf of Thailand coastline.",
+    duration: "6 days",
+    rating: "4.8",
     price: "LKR 70,000",
-    duration: "6 days",
     image: "/thailand-pack.webp",
-    imageAlt: "Thailand travel scenery",
-    slug: "destination/thailand",
+    href: "destination/thailand",
   },
   {
-    id: 3,
-    destination: "Dubai",
-    price: "LKR 160,000",
+    country: "Dubai",
+    title:"Dubai skyline cityscape",
+    description:
+      "Burj Khalifa, desert dunes, gold souk, and world-class dining in the UAE.",
     duration: "6 days",
+    rating: "5.0",
+    price: "LKR 160,000",
     image: "/dubai-pack.webp",
-    imageAlt: "Dubai skyline cityscape",
-    slug: "destination/dubai",
+    href: "destination/dubai",
   },
 ];
 
-const TourPackages: React.FC = () => {
+export default function TourCard() {
   return (
-    <section className="w-full mx-auto px-4 md:px-16 py-14 max-w-[300rem]">
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 justify-between">
-        <div className="space-y-3 md:space-y-6">
-          <h1 className="text-xl md:text-5xl font-bold text-black leading-tight text-center md:text-left">
-            Explore Our Most <br /> Popular Tour <br /> Packages
-          </h1>
+    <section className="py-24 px-6 md:px-16" style={{ background: "#F5F0E8" }}>
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
+        <div className="grid md:grid-cols-2 gap-10 items-end mb-14">
+          <div>
+            <p
+              className="text-xs font-semibold tracking-[0.25em] uppercase mb-3"
+              style={{ color: "#C9A96E" }}
+            >
+              Most Popular
+            </p>
+            <h2
+              className="text-4xl md:text-5xl font-light leading-tight"
+              style={{ fontFamily: "'Cormorant Garamond', serif", color: "#1A1A18" }}
+            >
+              Explore Our<br />
+              Tour <em className="italic" style={{ color: "#B85C38" }}>Packages</em>
+            </h2>
+          </div>
+          <p className="text-[#7A7A72] text-base md:text-lg leading-relaxed md:ml-10 self-end">
+            Carefully planned local and international tour packages designed to
+            offer comfort, value, and memorable travel experiences.
+          </p>
         </div>
 
-        <p className=" text-[#909090] text-base md:text-xl self-end text-center md:text-justify">
-          Explore our carefully planned local and international tour packages,
-          designed to offer comfort, value, and memorable travel experiences.
-        </p>
-      </div>
+        {/* Cards */}
+        <div className="grid md:grid-cols-3 gap-6">
+          {packages.map((pkg) => (
+            <div
+              key={pkg.country}
+              className="bg-white rounded-lg overflow-hidden group transition-all duration-400 hover:-translate-y-1.5"
+              style={{ boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  "0 24px 48px rgba(0,0,0,0.10)";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  "0 2px 12px rgba(0,0,0,0.06)";
+              }}
+            >
+              {/* Image */}
+              <div className="relative h-56 overflow-hidden">
+                <Image
+                  src={pkg.image}
+                  alt={pkg.country}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                <span
+                  className="absolute top-4 left-4 text-xs font-semibold tracking-widest uppercase px-3 py-1 rounded-full"
+                  style={{ background: "white", color: "#1A1A18" }}
+                >
+                  {pkg.country}
+                </span>
+              </div>
 
-      <div className="mt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-        {tourPackages.map((tour) => (
-          <TourCard key={tour.id} tour={tour} />
-        ))}
+              {/* Body */}
+              <div className="p-6">
+                <div className="flex justify-between items-center mb-3">
+                  <span className="text-xs tracking-wide" style={{ color: "#7A7A72" }}>
+                    ⏱ {pkg.duration}
+                  </span>
+                  <span
+                    className="text-xs font-semibold"
+                    style={{ color: "#C9A96E" }}
+                  >
+                    ★ {pkg.rating}
+                  </span>
+                </div>
+
+                <h3
+                  className="text-xl font-medium mb-2 leading-snug"
+                  style={{
+                    fontFamily: "'Cormorant Garamond', serif",
+                    color: "#1A1A18",
+                  }}
+                >
+                  {pkg.title}
+                </h3>
+                <p
+                  className="text-sm leading-relaxed mb-5"
+                  style={{ color: "#7A7A72" }}
+                >
+                  {pkg.description}
+                </p>
+
+                <div
+                  className="flex justify-between items-center pt-4"
+                  style={{ borderTop: "1px solid #EDE8DE" }}
+                >
+                  <div>
+                    <p
+                      className="text-[10px] uppercase tracking-widest"
+                      style={{ color: "#7A7A72" }}
+                    >
+                      Starting at
+                    </p>
+                    <p
+                      className="text-xl font-medium"
+                      style={{
+                        fontFamily: "'Cormorant Garamond', serif",
+                        color: "#1A1A18",
+                      }}
+                    >
+                      {pkg.price}
+                    </p>
+                  </div>
+
+                  <Link
+                    href={pkg.href}
+                    className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase px-4 py-2.5 rounded-sm border transition-all duration-200 hover:bg-[#1A1A18] hover:text-white hover:border-[#1A1A18]"
+                    style={{ borderColor: "#1A1A18", color: "#1A1A18" }}
+                  >
+                    Learn More →
+                  </Link>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* View all */}
+        <div className="text-center mt-12">
+          <Link
+            href="/tours"
+            className="inline-flex items-center gap-2 text-sm font-semibold tracking-widest uppercase px-8 py-4 rounded-sm transition-all duration-200"
+            style={{ background: "#1A1A18", color: "white" }}
+            onMouseEnter={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "#C9A96E";
+            }}
+            onMouseLeave={(e) => {
+              (e.currentTarget as HTMLElement).style.background = "#1A1A18";
+            }}
+          >
+            View All Packages →
+          </Link>
+        </div>
+
       </div>
     </section>
   );
-};
-
-export default TourPackages;
+}

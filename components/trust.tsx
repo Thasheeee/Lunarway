@@ -1,69 +1,109 @@
 import Image from "next/image";
 
+const trustPoints = [
+  {
+    icon: "✈",
+    title: "Local & International Expertise",
+    description:
+       "Tours across Sri Lanka and overseas destinations.",
+  },
+  {
+    icon: "🛡",
+    title: "Local & International Expertise",
+    description:
+       "Tours across Sri Lanka and overseas destinations.",
+  },
+  {
+    icon: "💎",
+   title: "Local & International Expertise",
+    description:
+       "Tours across Sri Lanka and overseas destinations.",
+  },
+  {
+    icon: "📞",
+    title: "Local & International Expertise",
+    description:
+       "Tours across Sri Lanka and overseas destinations.",
+  },
+];
+
+
+
 export default function WhyTrustUs() {
   return (
-    <section className="w-full bg-[#1b263b] py-14 max-w-[300rem] mx-auto">
-      <div className=" px-3 md:px-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-0"> 
-          
-          {/* LEFT IMAGE */}
-          <div className="relative w-full h-[320px] sm:h-[420px] lg:h-[520px]">
-            <Image
-              src="/mountain.webp" 
-              alt="Traveler on mountain"
-              fill
-              className="object-cover"
-              priority
-            />
-          </div>
+    <section
+      className="py-24 px-6 md:px-16 grid md:grid-cols-2 gap-16 items-center"
+      style={{ background: "#0F1923" }}
+    >
+      {/* Image side */}
+      <div className="relative rounded-lg overflow-hidden" style={{ aspectRatio: "4/5" }}>
+        <Image
+          src="/home-cover.webp"
+          alt="Traveler with freedom"
+          fill
+          className="object-cover"
+        />
 
-          {/* RIGHT CONTENT */}
-          <div className="bg-navyLight px-3 md:px-16 py-10 flex flex-col justify-center">
-            <h2 className="text-white text-center md:text-left text-2xl lg:text-4xl font-semibold leading-tight mb-8">
-              Why Travelers Trust Us
-              <br />
-              With Their Journeys
-            </h2>
 
-            <TrustItem />
-            <Divider />
-            <TrustItem />
-            <Divider />
-            <TrustItem />
-            <Divider />
-            <TrustItem />
-          </div>
+        
+      </div>
 
+      {/* Content side */}
+      <div>
+        <p
+          className="text-xs font-semibold tracking-[0.25em] uppercase mb-4"
+          style={{ color: "#C9A96E" }}
+        >
+          Why Choose Us
+        </p>
+        <h2
+          className="text-4xl md:text-5xl font-light leading-tight mb-10"
+          style={{ fontFamily: "'Cormorant Garamond', serif", color: "white" }}
+        >
+          Why Travelers Trust<br />
+          Us With Their{" "}
+          <em className="italic" style={{ color: "#C9A96E" }}>Journeys</em>
+        </h2>
+
+        <div className="flex flex-col">
+          {trustPoints.map((item, i) => (
+            <div
+              key={i}
+              className="flex gap-5 items-start py-6"
+              style={{
+                borderBottom:
+                  i < trustPoints.length - 1
+                    ? "1px solid rgba(255,255,255,0.08)"
+                    : "none",
+              }}
+            >
+              <div
+                className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 text-lg"
+                style={{
+                  border: "1px solid rgba(255,255,255,0.15)",
+                  color: "#C9A96E",
+                }}
+              >
+                {item.icon}
+              </div>
+              <div>
+                <h4
+                  className="text-white font-semibold text-sm mb-1.5"
+                  style={{ letterSpacing: "-0.01em" }}
+                >
+                  {item.title}
+                </h4>
+                <p
+                  className="text-sm leading-relaxed"
+                  style={{ color: "rgba(255,255,255,0.50)" }}
+                >
+                  {item.description}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
   );
-}
-
-function TrustItem() {
-  return (
-    <div className="flex gap-4 py-5">
-      <span>
-        <Image
-            src={"/airplane.svg"}
-            width={30}
-            height={30}
-            alt="plane logo"
-            className="invert"
-        />
-      </span>
-      <div>
-        <h4 className="text-white font-semibold text-base">
-          Local & International Expertise
-        </h4>
-        <p className="text-gray-300 text-sm mt-1">
-          Tours across Sri Lanka and overseas destinations.
-        </p>
-      </div>
-    </div>
-  );
-}
-
-function Divider() {
-  return <div className="w-full h-px bg-divider bg-white" />;
 }

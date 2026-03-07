@@ -1,72 +1,108 @@
-export default function Steps(){
-    return(
-        <main>
-            <section
-                className="relative max-w-[300rem] mx-auto py-14 bg-[url('/patern.webp')] bg-cover bg-center bg-no-repeat"
+const steps = [
+  {
+    num: "01",
+    title: "Choose Your Destination",
+    description:
+      "Explore local and international destinations and decide where you want to travel next.",
+  },
+  {
+    num: "02",
+    title: "Select a Tour Package",
+    description:
+      "Choose a tour package that matches your travel style, group size, and budget.",
+  },
+  {
+    num: "03",
+    title: "Confirm Dates & Details",
+    description:
+      "Share your preferred travel dates and personal details to finalise your booking.",
+  },
+  {
+    num: "04",
+    title: "Travel With Confidence",
+    description:
+      "Enjoy your journey while we handle every detail, from flights to accommodations.",
+  },
+];
+
+export default function Steps() {
+  return (
+    <section className="py-24 px-6 md:px-16" style={{ background: "#F5F0E8" }}>
+      <div className="max-w-7xl mx-auto">
+
+        {/* Header */}
+        <div className="grid md:grid-cols-2 gap-10 items-end mb-16">
+          <div>
+            <p
+              className="text-xs font-semibold tracking-[0.25em] uppercase mb-3"
+              style={{ color: "#C9A96E" }}
             >
-                
-                <div className="items-stretch relative w-full px-3 md:px-16 mx-auto">
-                    {/* Header */}
-                    <div className="grid lg:grid-cols-2 gap-7 mb-20">
-                        <h2 className="text-xl md:text-5xl text-center md:text-left font-bold text-gray-900 md:leading-[1.2]">
-                            Plan Your Trip In <br /> Simple Steps
-                        </h2>
-        
-                        <span className="text-[#909090] text-base md:text-xl text-center md:text-justify self-end">
-                            A carefully designed journey planning process focused on comfort and
-                            confidence.
-                        </span>
-                    </div>
-        
-                    {/* Steps */}
-                    <div className="grid grid-cols-1 text-black sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                        {/* Step 1 */}
-                        <div className="bg-white rounded-2xl p-5 md:mb-16 shadow-sm">
-                            <span className="md:text-5xl text-4xl font-bold block mb-20">01</span>
-                            <h3 className="font-semibold text-xl md:text-2xl mb-2">
-                                Choose Your Destination
-                            </h3>
-                            <p className="text-base md:text-xl text-gray-600">
-                                Explore local and international destinations and decide where you
-                                want to travel.
-                            </p>
-                        </div>
-        
-                        {/* Step 2 */}
-                        <div className="relative bg-white rounded-2xl p-5 shadow-sm mt-0 md:mt-16"> 
-                            <span className="md:text-5xl text-4xl font-bold block mb-20">02</span>
-                            <h3 className="font-semibold text-xl md:text-2xl mb-2">
-                                Select a Tour Package
-                            </h3>
-                            <p className="text-base md:text-lg text-gray-600">
-                                Choose a tour package that matches your travel style and budget.
-                            </p>
-                        </div>
-        
-                        {/* Step 3 */}
-                        <div className="bg-white rounded-2xl p-5 md:mb-16 shadow-sm">
-                            <span className="text-4xl md:text-5xl font-bold block mb-20">03</span>
-                            <h3 className="font-semibold text-xl md:text-2xl mb-2">
-                                Confirm Dates and Details
-                            </h3>
-                            <p className="text-base md:text-lg text-gray-600">
-                                Share your preferred dates and details to finalize the booking.
-                            </p>
-                        </div>
-        
-                        {/* Step 4 */}
-                        <div className="bg-white rounded-2xl p-5 shadow-sm mt-0 md:mt-16">
-                            <span className="text-4xl md:text-5xl font-bold block mb-20">04</span>
-                            <h3 className="font-semibold text-xl md:text-2xl mb-2">
-                                Travel With Confidence
-                            </h3>
-                            <p className="text-base md:text-lg text-gray-600">
-                                Enjoy your journey while we handle the rest.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-        </main>
-    )
+              How It Works
+            </p>
+            <h2
+              className="text-4xl md:text-5xl font-light leading-tight"
+              style={{ fontFamily: "'Cormorant Garamond', serif", color: "#1A1A18" }}
+            >
+              Plan Your Trip In<br />
+              <em className="italic" style={{ color: "#B85C38" }}>Simple Steps</em>
+            </h2>
+          </div>
+          <p
+            className="text-base md:text-lg leading-relaxed self-end md:ml-10"
+            style={{ color: "#7A7A72" }}
+          >
+            A carefully designed journey planning process focused on comfort,
+            clarity, and confidence from start to finish.
+          </p>
+        </div>
+
+        {/* Steps grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px" style={{ background: "#EDE8DE" }}>
+          {steps.map((step) => (
+            <div
+              key={step.num}
+              className="bg-white p-9 group transition-all duration-300 hover:-translate-y-1 cursor-default"
+              style={{ boxShadow: "none" }}
+              onMouseEnter={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow =
+                  "0 16px 36px rgba(0,0,0,0.08)";
+                (e.currentTarget as HTMLElement).style.zIndex = "1";
+                (e.currentTarget as HTMLElement).style.position = "relative";
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.boxShadow = "none";
+              }}
+            >
+              {/* Circle number */}
+              <div
+                className="w-14 h-14 rounded-full flex items-center justify-center mb-8 border transition-all duration-300 group-hover:bg-[#1A1A18] group-hover:border-[#1A1A18]"
+                style={{
+                  borderColor: "#EDE8DE",
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "22px",
+                  fontWeight: 300,
+                  color: "#1A1A18",
+                }}
+              >
+                <span className="group-hover:text-white transition-colors duration-300">
+                  {step.num}
+                </span>
+              </div>
+
+              <h3
+                className="font-semibold text-base mb-3"
+                style={{ color: "#1A1A18", letterSpacing: "-0.01em" }}
+              >
+                {step.title}
+              </h3>
+              <p className="text-sm leading-relaxed" style={{ color: "#7A7A72" }}>
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
 }

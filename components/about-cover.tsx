@@ -1,144 +1,198 @@
+"use client";
+
 import Image from "next/image";
-import { MapPinned,Banknote,SquarePen,Handshake } from "lucide-react";
 
-function JourneySection() {
+const values = [
+  {
+    icon: "🗺",
+    title: "Carefully Planned Itineraries",
+    desc: "Well-structured journeys designed for comfort and smooth travel.",
+  },
+  {
+    icon: "💳",
+    title: "Transparent Pricing",
+    desc: "Clear pricing with no hidden costs or surprises.",
+  },
+  {
+    icon: "⚙️",
+    title: "Flexible Travel Options",
+    desc: "Adjust travel dates, hotels, and experiences to suit your needs.",
+  },
+  {
+    icon: "🤝",
+    title: "Dedicated Travel Support",
+    desc: "Reliable assistance before and throughout your journey.",
+  },
+];
+
+const galleryImages = [
+  { src: "/about-cover1.webp", alt: "Mountain travelers", span: "row-span-2" },
+  { src: "/about-cover2.webp", alt: "Desert dunes" },
+  { src: "/about-cover3.webp", alt: "Thai temple" },
+];
+
+export default function JourneySection() {
   return (
-    <section className="py-24 md:content-center">
-    <div className="max-w-4/6 mx-auto px-3 md:px-16 ">
+    <>
+      {/* ── HERO ─────────────────────────────────────────────────────────── */}
+      <section className="pt-32 pb-16 px-6 md:px-16" style={{ background: "#F5F0E8" }}>
+        <div className="max-w-7xl mx-auto">
 
-        {/* Top Row */}
-        <div className="md:gap-20 gap-5 flex items-stretch flex-col md:flex-row justify-between">
-          <h2 className="text-2xl md:text-6xl text-black font-semibold leading-tight text-left ">
-            Your Journey, <br /> Our Commitment
-          </h2>
-
-          <span className="text-[#909090] self-end w-full md:w-3/6 md:ml-20 text-base md:text-xl text-left md:text-justify">
-            We plan travel experiences with care, clarity, and attention to
-            detail, so every journey feels effortless and memorable.
-          </span>
-        </div>
-
-        {/* Image Grid */}
-        <div className="mt-10 md:mt-16 grid grid-cols-1 md:grid-cols-4 gap-6">
-
-          {/* Large Image */}
-          <div className="md:col-span-2 relative h-[320px] md:h-[600px] rounded-xl overflow-hidden">
-            <Image
-              src="/about-cover1.webp"
-              alt="Mountain journey"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-          {/* Right Images */}
-          <div className="md:col-span-1 relative h-[320px] md:h-[600px] rounded-xl overflow-hidden">
-            <Image
-              src="/about-cover2.webp"
-              alt="Mountain journey"
-              fill
-              className="object-cover"
-            />
-          </div>
-
-            <div className="md:col-span-1 relative h-[320px] md:h-[600px] rounded-xl overflow-hidden">
-                <Image
-                src="/about-cover3.webp"
-                alt="Mountain journey"
-                fill
-                className="object-cover"
-                />
+          {/* Header */}
+          <div className="grid md:grid-cols-2 gap-10 items-end mb-14">
+            <div>
+              <p
+                className="text-xs font-semibold tracking-[0.25em] uppercase mb-3"
+                style={{ color: "#C9A96E" }}
+              >
+                Our Story
+              </p>
+              <h1
+                className="font-light leading-tight"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(44px, 6vw, 80px)",
+                  color: "#1A1A18",
+                }}
+              >
+                Your Journey,<br />
+                Our{" "}
+                <em className="italic" style={{ color: "#B85C38" }}>
+                  Commitment
+                </em>
+              </h1>
             </div>
-          </div>
-        
-
-        {/* Bottom Content */}
-        <div className="mt-20 grid lg:grid-cols-2 gap-10 md:gap-20">
-
-          <h3 className="text-xl md:text-5xl text-black font-semibold leading-tight text-center md:text-left">
-            Where Every <br /> Journey Begins
-          </h3>
-
-          <div className="text-gray-500 text-sm md:text-base space-y-6 max-w-xl text-center md:text-left">
-            <p>
-              We are a travel-focused team dedicated to planning smooth and
-              well-organized journeys. Our aim is to simplify travel by handling
-              the details, allowing our travelers to focus on enjoying the
-              experience.
-            </p>
-
-            <p>
-              From local getaways to international tours, every journey we plan
-              reflects our commitment to reliability, comfort, and thoughtful
-              planning.
-            </p>
-          </div>
-        </div>
-
-        {/* Features */}
-        <div className="mt-20 mx-6 md:mx-0 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-
-          <div className="space-y-2">
-            <Image 
-              src="/map.svg"
-              width={30}
-              height={30}
-              alt="Map"
-              className="md:mx-0 mx-auto"
-            />
-            <h4 className="text-lg text-center md:text-left font-semibold text-black">Carefully Planned Itineraries</h4>
-            <p className="text-base text-center md:text-left text-gray-500">
-              Well-structured journeys designed for comfort and smooth travel.
+            <p
+              className="text-base md:text-lg leading-relaxed self-end md:ml-10"
+              style={{ color: "#7A7A72" }}
+            >
+              We plan travel experiences with care, clarity, and attention to
+              detail, so every journey feels effortless and truly memorable.
             </p>
           </div>
 
-          <div className="space-y-2">
-            <Image 
-              src="/money.svg"
-              width={30}
-              height={30}
-              alt="Cash"
-              className="md:mx-0 mx-auto"
-            />
-            <h4 className="text-lg text-center md:text-left font-semibold text-black">Transparent Pricing</h4>
-            <p className="text-base text-center md:text-left text-gray-500">
-              Clear pricing with no hidden costs or surprises.
-            </p>
-          </div>
+          {/* Image gallery */}
+          <div className="grid grid-cols-3 gap-4" style={{ height: "520px" }}>
+            {/* Large left image */}
+            <div className="col-span-3 md:col-span-2 relative rounded-xl overflow-hidden row-span-2" style={{ gridRow: "span 2" }}>
+              <Image
+                src="/about-cover1.webp"
+                alt="Mountain travelers"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
 
-          <div className="space-y-2">
-          <Image 
-              src="/art.svg"
-              width={30}
-              height={30}
-              alt="Art"
-              className="md:mx-0 mx-auto"
-            />
-            <h4 className="text-lg text-center md:text-left font-semibold text-black">Flexible Travel Options</h4>
-            <p className="text-base text-center md:text-left text-gray-500">
-              Adjust travel dates, hotels, and experiences to suit your needs.
-            </p>
-          </div>
+            {/* Top right */}
+            <div className="relative rounded-xl overflow-hidden">
+              <Image
+                src="/about-cover2.webp"
+                alt="Desert dunes"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
 
-          <div className="space-y-2">
-          <Image 
-              src="/handshake.svg"
-              width={30}
-              height={30}
-              alt="Handshake"
-              className="md:mx-0 mx-auto"
-            />
-            <h4 className="text-lg text-center md:text-left font-semibold text-black">Dedicated Travel Support</h4>
-            <p className="text-base text-center md:text-left text-gray-500">
-              Reliable assistance before and throughout your journey.
-            </p>
-          </div>
+            {/* Bottom right */}
+            <div className="relative rounded-xl overflow-hidden">
+              <Image
+                src="/about-cover3.webp"
+                alt="Thai temple"
+                fill
+                className="object-cover hover:scale-105 transition-transform duration-700"
+              />
+            </div>
 
-        </div>
+            {/* Wide bottom spanning 2 cols */}
+            
+          </div>
         </div>
       </section>
-    
+
+      {/* ── WHO WE ARE ───────────────────────────────────────────────────── */}
+      <section className="py-24 px-6 md:px-16" style={{ background: "#FAFAF7" }}>
+        <div className="max-w-7xl mx-auto">
+
+          <div className="grid md:grid-cols-2 gap-12 items-center mb-16">
+            <div>
+              <p
+                className="text-xs font-semibold tracking-[0.25em] uppercase mb-3"
+                style={{ color: "#C9A96E" }}
+              >
+                Who We Are
+              </p>
+              <h2
+                className="font-light leading-tight"
+                style={{
+                  fontFamily: "'Cormorant Garamond', serif",
+                  fontSize: "clamp(36px, 4vw, 56px)",
+                  color: "#1A1A18",
+                }}
+              >
+                Where Every<br />
+                <em className="italic" style={{ color: "#B85C38" }}>
+                  Journey Begins
+                </em>
+              </h2>
+            </div>
+
+            <div className="space-y-4 md:ml-10" style={{ color: "#7A7A72" }}>
+              <p className="text-base md:text-lg leading-relaxed">
+                We are a travel-focused team dedicated to planning smooth and
+                well-organized journeys. Our aim is to simplify travel by
+                handling the details, allowing our travelers to focus on
+                enjoying the experience.
+              </p>
+              <p className="text-base md:text-lg leading-relaxed">
+                From local getaways to international tours, every journey we
+                plan reflects our commitment to reliability, comfort, and
+                thoughtful planning.
+              </p>
+            </div>
+          </div>
+
+          {/* Values grid */}
+          <div
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-px"
+            style={{ background: "#EDE8DE" }}
+          >
+            {values.map((v) => (
+              <div
+                key={v.title}
+                className="bg-white p-9 group cursor-default transition-all duration-300 hover:-translate-y-1"
+                style={{ borderBottom: "3px solid transparent" }}
+                onMouseEnter={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderBottomColor = "#C9A96E";
+                  (e.currentTarget as HTMLElement).style.boxShadow =
+                    "0 20px 40px rgba(0,0,0,0.08)";
+                  (e.currentTarget as HTMLElement).style.position = "relative";
+                  (e.currentTarget as HTMLElement).style.zIndex = "1";
+                }}
+                onMouseLeave={(e) => {
+                  (e.currentTarget as HTMLElement).style.borderBottomColor = "transparent";
+                  (e.currentTarget as HTMLElement).style.boxShadow = "none";
+                }}
+              >
+                <div
+                  className="text-3xl mb-6"
+                  style={{ filter: "grayscale(0.2)" }}
+                >
+                  {v.icon}
+                </div>
+                <h3
+                  className="font-semibold text-sm mb-3"
+                  style={{ color: "#1A1A18", letterSpacing: "-0.01em" }}
+                >
+                  {v.title}
+                </h3>
+                <p className="text-sm leading-relaxed" style={{ color: "#7A7A72" }}>
+                  {v.desc}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
   );
 }
-
-export default JourneySection;

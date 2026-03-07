@@ -1,136 +1,175 @@
-'use client';
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+
+const destinations = [
+
+  {
+    name: "Malaysia",
+    tag: "International",
+    description: "Modern cities and rich culture. Landmarks, shopping, and scenic attractions.",
+      images: ['/destination-img1.webp', '/malaysia2.webp'],
+    url: 'destination/malaysia',
+  },
+  {
+    name: "Thailand",
+    tag: "International",
+    description: 'Culture, temples, and lively streets. Markets, nightlife, and iconic sights. Ideal for adventure and leisure.',
+   images: ['/thailand1.webp', '/thailand2.webp'],
+      url: 'destination/thailand',
+  },
+  {
+    name: "Dubai",
+    tag: "International",
+    description: 'Luxury city and desert adventures.Iconic landmarks and premium shopping. Perfect for modern travel experiences.',
+    images: ['/dubai1.webp', '/dubai2.webp'],
+      url: 'destination/dubai',
+  },
+
+];
 
 export default function Destinations() {
-  const slides = [
-    {
-      title: 'Malaysia',
-      description:
-        'Modern cities and rich culture. Landmarks, shopping, and scenic attractions. Great for varied travel experiences.',
-      images: ['/destination-img1.webp', '/malaysia2.webp'],
-      url: 'destination/malaysia',
-    },
-    {
-      title: 'Thailand',
-      description:
-        'Culture, temples, and lively streets. Markets, nightlife, and iconic sights. Ideal for adventure and leisure.',
-      images: ['/thailand1.webp', '/thailand2.webp'],
-      url: 'destination/thailand',
-    },
-    {
-      title: 'Dubai',
-      description:
-        'Luxury city and desert adventures.Iconic landmarks and premium shopping. Perfect for modern travel experiences.',
-      images: ['/dubai1.webp', '/dubai2.webp'],
-      url: 'destination/dubai',
-    },
-  ];
+  const [index, setIndex] = useState(0);
+  const visible = 3;
+  const max = destinations.length - visible;
 
-  const sliderRef = useRef<HTMLDivElement | null>(null);
-  const [activeIndex, setActiveIndex] = useState(0);
-
-  const scrollToSlide = (index: number) => {
-    if (!sliderRef.current) return;
-    const slideWidth = sliderRef.current.clientWidth;
-    sliderRef.current.scrollTo({
-      left: slideWidth * index,
-      behavior: "smooth",
-    });
-    setActiveIndex(index);
-  };
-
-  const handleScroll = () => {
-    if (!sliderRef.current) return;
-    const slideWidth = sliderRef.current.clientWidth;
-    const index = Math.round(sliderRef.current.scrollLeft / slideWidth);
-    setActiveIndex(index);
-  };
+  const prev = () => setIndex((i) => Math.max(0, i - 1));
+  const next = () => setIndex((i) => Math.min(max, i + 1));
 
   return (
-    <section className="w-full max-w-[300rem] mx-auto bg-[#F8F8F6] px-4 md:px-16 py-14 flex items-center">
-      <div className="mx-auto w-full overflow-hidden">
+    <section className="py-24 px-6 md:px-16" style={{ background: "#FAFAF7" }}>
+      <div className="max-w-7xl mx-auto">
 
-        {/* SLIDER */}
-        <div
-          ref={sliderRef}
-          onScroll={handleScroll}
-          className="flex overflow-x-auto scroll-smooth snap-x snap-mandatory pb-6 scrollbar-hide"
-        >
-          {slides.map((slide, idx) => (
-            <div
-              key={idx}
-              className="min-w-full snap-center grid grid-cols-1 md:grid-cols-[30%_40%_30%] lg:grid-cols-[30%_40%_30%] gap-10 md:gap-0 items-start"
+        {/* Header */}
+        <div className="flex items-end justify-between mb-14">
+          <div>
+            <p
+              className="text-xs font-semibold tracking-[0.25em] uppercase mb-3"
+              style={{ color: "#C9A96E" }}
             >
-              {/* LEFT TEXT */}
-              <div className="space-y-4 md:space-y-6 text-center md:text-left">
-                <h2 className="text-xl md:text-4xl lg:text-5xl font-bold text-black leading-snug">
-                  Places We <br /> Take You <br /> Worldwide
-                </h2>
-                <p className="text-gray-500 text-sm md:text-xl lg:text-2xl md:w-5/6 mx-auto md:mx-0">
-                  Discover destinations chosen for their experiences, culture, and unforgettable moments, both close to home and across the world.
-                </p>
-              </div>
+              Explore The World
+            </p>
+            <h2
+              className="text-4xl md:text-5xl font-light leading-tight"
+              style={{ fontFamily: "'Cormorant Garamond', serif", color: "#1A1A18" }}
+            >
+              Places We Take<br />
+              You <em className="italic" style={{ color: "#B85C38" }}>Worldwide</em>
+            </h2>
+          </div>
 
-              {/* CENTER IMAGE */}
-              <div className="flex justify-center">
-                <div className="h-[400px] w-full px-10 md:px-0 md:h-[85vh] max-h-[570] md:w-[65%] lg:w-[85%] rounded-lg overflow-hidden shadow-md relative">
-                  <Image
-                    src={slide.images[0]}
-                    alt={slide.title}
-                    fill
-                    className="object-cover"
-                    quality={90}
-                    priority
-                  />
-                </div>
-              </div>
-
-              {/* RIGHT COLUMN */}
-              <div className="flex flex-col items-stretch h-[400px] md:h-[85vh] max-h-[570] relative">
-                
-                {/* TOP CARD */}
-                <div className="bg-white rounded-xl shadow-sm py-6 md:py-10 px-2 md:px-4 w-full mb-6 ">
-                  <h3 className="text-base md:text-lg lg:text-xl font-semibold text-black">
-                    {slide.title}
-                  </h3>
-                  <p className="text-gray-500 text-base lg:text-lg w-full mt-4">
-                    {slide.description}
-                  </p>
-                </div>
-
-                {/* BOTTOM IMAGE */}
-                <div className="mt-auto mx-auto md:mx-0 w-[150px] lg:w-[230px] h-[55%] rounded-xl self-start overflow-hidden shadow-md">
-                  <img
-                    src={slide.images[1]}
-                    alt={`${slide.title} small`}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                {/* LINK */}
-                <Link
-                  href={slide.url}
-                  className="lg:absolute md:static static md:mx-0 mx-auto bottom-0 right-0 text-base sm:text-lg md:text-xl text-black font-medium hover:underline "
-                >
-                  <u>View Details →</u>
-                </Link>
-              </div>
-            </div>
-          ))}
+          <div className="hidden md:flex gap-3">
+            <button
+              onClick={prev}
+              disabled={index === 0}
+              className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 border disabled:opacity-30"
+              style={{ borderColor: "#EDE8DE", color: "#1A1A18" }}
+              onMouseEnter={(e) => {
+                if (index > 0) {
+                  (e.currentTarget as HTMLElement).style.background = "#C9A96E";
+                  (e.currentTarget as HTMLElement).style.borderColor = "#C9A96E";
+                  (e.currentTarget as HTMLElement).style.color = "white";
+                }
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "white";
+                (e.currentTarget as HTMLElement).style.borderColor = "#EDE8DE";
+                (e.currentTarget as HTMLElement).style.color = "#1A1A18";
+              }}
+            >
+              <ChevronLeft size={18} />
+            </button>
+            <button
+              onClick={next}
+              disabled={index >= max}
+              className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-200 border disabled:opacity-30"
+              style={{ borderColor: "#EDE8DE", color: "#1A1A18" }}
+              onMouseEnter={(e) => {
+                if (index < max) {
+                  (e.currentTarget as HTMLElement).style.background = "#C9A96E";
+                  (e.currentTarget as HTMLElement).style.borderColor = "#C9A96E";
+                  (e.currentTarget as HTMLElement).style.color = "white";
+                }
+              }}
+              onMouseLeave={(e) => {
+                (e.currentTarget as HTMLElement).style.background = "white";
+                (e.currentTarget as HTMLElement).style.borderColor = "#EDE8DE";
+                (e.currentTarget as HTMLElement).style.color = "#1A1A18";
+              }}
+            >
+              <ChevronRight size={18} />
+            </button>
+          </div>
         </div>
 
-        {/* INDICATORS */}
-        <div className="flex justify-center gap-3 mt-2">
-          {slides.map((_, i) => (
+        {/* Cards */}
+        <div className="overflow-hidden">
+          <div
+            className="flex gap-5 transition-transform duration-500 ease-out"
+            style={{ transform: `translateX(calc(-${index} * (33.333% + 6.667px)))` }}
+          >
+            {destinations.map((dest) => (
+              <div
+                key={dest.name}
+                className="flex-shrink-0 rounded-lg overflow-hidden relative group cursor-pointer"
+                style={{ width: "calc(33.333% - 14px)", aspectRatio: "3/4" }}
+              >
+                <Image
+                  src={dest.images[0]}
+                  alt={dest.name}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-105"
+                />
+                {/* Overlay */}
+                <div
+                  className="absolute inset-0 flex flex-col justify-end p-7"
+                  style={{
+                    background:
+                      "linear-gradient(to top, rgba(15,25,35,0.88) 0%, rgba(15,25,35,0) 55%)",
+                  }}
+                >
+                  <span
+                    className="inline-block text-white text-xs font-semibold tracking-widest uppercase px-2.5 py-1 rounded-sm mb-3 w-fit"
+                    style={{ background: "#C9A96E" }}
+                  >
+                    {dest.tag}
+                  </span>
+                  <h3
+                    className="text-white text-3xl font-light mb-2"
+                    style={{ fontFamily: "'Cormorant Garamond', serif" }}
+                  >
+                    {dest.name}
+                  </h3>
+                  <p className="text-white/70 text-sm leading-relaxed mb-4">
+                    {dest.description}
+                  </p>
+                  <Link
+                   href={dest.url}
+                    className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase transition-all duration-200 hover:gap-3"
+                    style={{ color: "#C9A96E" }}
+                  >
+                    View Details →
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Dots */}
+        <div className="flex gap-2 justify-center mt-8 md:hidden">
+          {Array.from({ length: max + 1 }).map((_, i) => (
             <button
               key={i}
-              onClick={() => scrollToSlide(i)}
-              className={`h-[3px] w-8 transition-colors ${
-                activeIndex === i ? "bg-black" : "bg-black/30"
-              }`}
-              aria-label={`Go to slide ${i + 1}`}
+              onClick={() => setIndex(i)}
+              className="h-[3px] rounded-full transition-all duration-300"
+              style={{
+                width: i === index ? "40px" : "24px",
+                background: i === index ? "#1A1A18" : "#E2DDD4",
+              }}
             />
           ))}
         </div>
