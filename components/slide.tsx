@@ -25,7 +25,7 @@ const destinations = [
     name: "Dubai",
     tag: "International",
     description: 'Luxury city and desert adventures.Iconic landmarks and premium shopping. Perfect for modern travel experiences.',
-    images: ['/dubai1.webp', '/dubai2.webp'],
+    images: ['/Dubai1.webp', '/Dubai2.webp'],
       url: 'destination/dubai',
   },
 
