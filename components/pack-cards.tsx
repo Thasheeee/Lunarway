@@ -35,6 +35,16 @@ const packages = [
     image: "/dubai-pack.webp",
     href: "destination/dubai",
   },
+  {
+    country: "Myanmar",
+    title: "Royal Capitals of Myanmar",
+    description: "Ancient pagodas, royal cities, Inle Lake, and Bagan's timeless temple plains.",
+    duration: "10 days",
+    rating: "4.9",
+    price: "LKR 230,000",
+    image: "/myanmar-pack.webp",
+    href: "destination/myanmar",
+  },
 ];
 
 export default function TourCard() {
@@ -151,7 +161,7 @@ export default function TourCard() {
 
                   <Link
                     href={pkg.href}
-                    className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase px-4 py-2.5 rounded-sm border transition-all duration-200 hover:bg-[#1A1A18] hover:text-white hover:border-[#1A1A18]"
+                    className="inline-flex items-center gap-2 text-xs font-semibold tracking-widest uppercase px-4 py-2.5 rounded-sm border transition-all duration-200 "
                     style={{ borderColor: "#1A1A18", color: "#1A1A18" }}
                   >
                     Learn More →

@@ -42,6 +42,15 @@ const tourPackages: TourPackage[] = [
     imageAlt: "Dubai skyline cityscape",
     slug: "destination/dubai",
   },
+  {
+    id: 4,
+    destination: "Myanmar",
+    price: "LKR 230,000",
+    duration: "10 Days / 9 Nights",
+    image: "/myanmar-pack.webp",
+    imageAlt: "Myanmar temple architecture",
+    slug: "destination/myanmar",
+  },
 ];
 
 function TourCard({ tour }: { tour: TourPackage }) {

@@ -28,6 +28,13 @@ const destinations = [
     images: ['/Dubai1.webp', '/Dubai2.webp'],
       url: 'destination/dubai',
   },
+  {
+    name: "Myanmar",
+    tag: "International",
+    description: "Ancient pagodas, royal capitals, and timeless temple plains. A deeply enriching cultural journey.",
+    images: ['/myanmar-pack.webp', '/details-myanmar1.webp'],
+    url: 'destination/myanmar',
+  },
 
 ];
 

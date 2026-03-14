@@ -16,7 +16,7 @@ const destinations = [
   "Thailand",
   "Dubai",
   "Sri Lanka",
-  "Bali",
+  "Myanmar",
 ];
 
 export default function Foot() {
@@ -195,8 +195,8 @@ export default function Foot() {
               <ul className="space-y-4">
                 {[
                   { icon: "📍", text: "123 Travel Lane,\nColombo 03, Sri Lanka" },
-                  { icon: "📞", text: "+94 77 123 4567" },
-                  { icon: "✉", text: "hello@lunarwaytravels.com" },
+                  { icon: "📞", text: "0707 256 600 / 0707 356 600" },
+                  { icon: "✉", text: "info@lunarwaytravels.com" },
                 ].map(({ icon, text }) => (
                   <li key={icon} className="flex gap-3 items-start">
                     <span className="text-sm mt-0.5" style={{ color: "#C9A96E" }}>
@@ -217,7 +217,7 @@ export default function Foot() {
           {/* Bottom bar */}
           <div className="flex flex-col md:flex-row justify-between items-center gap-4 pt-6">
             <p className="text-xs" style={{ color: "rgba(255,255,255,0.3)" }}>
-              © 2025 Lunarway Travels. All Rights Reserved.
+              © 2026 Lunarway Travels. All Rights Reserved.
             </p>
             <div className="flex gap-6">
               {["Privacy Policy", "Terms of Service"].map((item) => (

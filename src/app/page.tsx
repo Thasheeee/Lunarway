@@ -56,7 +56,7 @@ const testimonials = [
 
 const marqueeItems = [
   "Malaysia", "Thailand", "Dubai", "Singapore",
-  "Sri Lanka", "Maldives", "Japan", "Bali",
+  "Sri Lanka", "Maldives","Myanmar"
 ];
 
 
@@ -67,13 +67,23 @@ export default function Home() {
 
       {/* Cover image */}
       <section className="relative h-screen flex items-end overflow-hidden">
-        <Image
-          src="/home-cover.webp"
-          alt="Travel around Sri Lanka"
-          fill
-          priority
-          className="object-cover"
-        />
+        <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
+          <iframe
+            src="https://www.youtube.com/embed/q0mbKsKG-ng?autoplay=1&mute=1&loop=1&playlist=q0mbKsKG-ng&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
+            allow="autoplay; encrypted-media"
+            className="absolute border-0"
+            style={{
+              top: "52.7%",
+              left: "50%",
+              transform: "translate(-50%, -50%)",
+              width: "177.78vh",
+              minWidth: "100%",
+              height: "58.15vw",
+              minHeight: "100%",
+              pointerEvents: "none",
+            }}
+          />
+        </div>
 
         <div
           className="absolute inset-0"
@@ -100,7 +110,7 @@ export default function Home() {
           <div className="flex flex-col items-start gap-5 md:pb-2">
 
             <div className="flex flex-wrap gap-2">
-              {["✈ Sri Lanka", "🌏 International", "⭐ Curated Tours"].map((b) => (
+              {[" Sri Lanka", " International", " Curated Tours"].map((b) => (
                 <span
                   key={b}
                   className="text-white text-xs px-3 py-1.5 rounded-full"
@@ -317,10 +327,7 @@ export default function Home() {
               {testimonials.map((t, i) => (
                 <div
                   key={i}
-                  className={`bg-white rounded-xl p-7 max-w-sm w-full shadow-2xl transition-all duration-300 ${i === 1
-                      ? "translate-y-0 opacity-100"
-                      : "translate-y-4 opacity-60 hidden md:block"
-                    }`}
+                  className="bg-white rounded-xl p-7 max-w-sm w-full shadow-xl transition-all duration-300 hover:-translate-y-3 hover:shadow-2xl hidden md:block"
                 >
                   <span
                     className="block mb-3 leading-none select-none"
