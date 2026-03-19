@@ -8,6 +8,7 @@ import WhyTrustUs from "../../components/trust";
 import Foot from "../../components/footer";
 import Steps from "../../components/trip-steps";
 import Link from "next/link";
+import PackageCards from "../../components/packageCards";
 
 const services = [
   {
@@ -68,21 +69,24 @@ export default function Home() {
       {/* Cover image */}
       <section className="relative h-screen flex items-end overflow-hidden">
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
-          <iframe
-            src="https://www.youtube.com/embed/q0mbKsKG-ng?autoplay=1&mute=1&loop=1&playlist=q0mbKsKG-ng&controls=0&showinfo=0&rel=0&modestbranding=1&playsinline=1"
-            allow="autoplay; encrypted-media"
-            className="absolute border-0"
+          <video
+            autoPlay
+            muted
+            loop
+            playsInline
+            className="absolute border-0 object-cover"
             style={{
-              top: "52.7%",
+              top: "50%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              width: "177.78vh",
-              minWidth: "100%",
-              height: "58.15vw",
-              minHeight: "100%",
+              width: "100%",
+              height: "100%",
               pointerEvents: "none",
             }}
-          />
+          >
+             <source src="https://vz-919f82ce-871.b-cdn.net/a107b64e-dd9d-46ef-a155-55b865e6fe53/playlist.m3u8" type="application/x-mpegURL" />
+            Your browser does not support the video tag.
+          </video>
         </div>
 
         <div
@@ -271,8 +275,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ── DESTINATIONS ──────────────────────────────────────────────────── */}
-      <Destinations />
+     <PackageCards />
 
       {/* ── TOUR PACKAGES ─────────────────────────────────────────────────── */}
       <TourCard />
