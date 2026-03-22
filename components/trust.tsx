@@ -2,25 +2,25 @@ import Image from "next/image";
 
 const trustPoints = [
   {
-    icon: "✈",
+   
     title: "Local & International Expertise",
     description:
        "Tours across Sri Lanka and overseas destinations.",
   },
   {
-    icon: "🛡",
+   
     title: "Local & International Expertise",
     description:
        "Tours across Sri Lanka and overseas destinations.",
   },
   {
-    icon: "💎",
+    
    title: "Local & International Expertise",
     description:
        "Tours across Sri Lanka and overseas destinations.",
   },
   {
-    icon: "📞",
+    
     title: "Local & International Expertise",
     description:
        "Tours across Sri Lanka and overseas destinations.",
@@ -77,15 +77,7 @@ export default function WhyTrustUs() {
                     : "none",
               }}
             >
-              <div
-                className="w-11 h-11 rounded-full flex items-center justify-center flex-shrink-0 text-lg"
-                style={{
-                  border: "1px solid rgba(255,255,255,0.15)",
-                  color: "#C9A96E",
-                }}
-              >
-                {item.icon}
-              </div>
+              
               <div>
                 <h4
                   className="text-white font-semibold text-sm mb-1.5"

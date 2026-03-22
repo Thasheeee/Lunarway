@@ -10,6 +10,7 @@
     "deploy": "rsync -avz --delete --exclude='node_modules' --exclude='.next' --exclude='.git' --exclude='.DS_Store' --exclude='*.map' ./ root@173.249.22.157:/var/www/lunarwaytravels.com && ssh root@173.249.22.157 'cd /var/www/lunarwaytravels.com && npm install && npm run build && pm2 restart lunarwaytravels.com  --update-env'"
   },
   "dependencies": {
+    "hls.js": "^1.6.15",
     "lucide-react": "^0.562.0",
     "next": "^16.1.0",
     "nodemailer": "^8.0.3",
@@ -18,6 +19,7 @@
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/nodemailer": "^7.0.11",
     "@types/react": "^19",
     "@types/react-dom": "^19",
     "autoprefixer": "^10.4.23",

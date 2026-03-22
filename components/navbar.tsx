@@ -11,6 +11,9 @@ export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const pathname = usePathname();
   
+  // Check if we're on the home page
+  const isHomePage = pathname === "/";
+  
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 60);
     window.addEventListener("scroll", onScroll);
@@ -28,15 +31,69 @@ export default function Navbar() {
     { href: "/about", label: "About us" },
   ];
 
+  // Determine navbar style based on page and scroll state
+  const getNavbarStyle = () => {
+    if (isHomePage) {
+      // Home page: transparent initially, white when scrolled
+      return scrolled
+        ? "bg-white/95 backdrop-blur-md shadow-sm py-3"
+        : "py-4";
+    } else {
+      // Other pages: always white
+      return "bg-white/95 backdrop-blur-md shadow-sm py-3";
+    }
+  };
+
+  const getNavbarBorder = () => {
+    if (isHomePage && !scrolled) {
+      return { background: "transparent", border: "none" };
+    } else {
+      return { borderBottom: "1px solid #EDE8DE" };
+    }
+  };
+
+  const getTextColor = () => {
+    if (isHomePage && !scrolled) {
+      return "text-white hover:text-[#C9A96E]";
+    } else {
+      return "text-[#7A7A72] hover:text-[#1A1A18]";
+    }
+  };
+
+  const getActiveTextColor = () => {
+    if (isHomePage && !scrolled) {
+      return "text-white";
+    } else {
+      return "text-[#1A1A18]";
+    }
+  };
+
+  const getButtonStyle = () => {
+    if (isHomePage && !scrolled) {
+      return "bg-white text-[#1A1A18]";
+    } else {
+      return "bg-[#1A1A18] text-white";
+    }
+  };
+
+  const getMobileIconColor = () => {
+    if (isHomePage && !scrolled) {
+      return "text-white";
+    } else {
+      return "text-[#1A1A18]";
+    }
+  };
+
+  const showUnderline = () => {
+    // Only show underline when NOT on home page initial state
+    return !(isHomePage && !scrolled);
+  };
+
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${
-          scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-sm py-3"
-            : "bg-white/90 backdrop-blur-sm py-4"
-        }`}
-        style={{ borderBottom: "1px solid #EDE8DE" }}
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${getNavbarStyle()}`}
+        style={getNavbarBorder()}
       >
         <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
           {/* Logo */}
@@ -56,11 +113,11 @@ export default function Navbar() {
               <li key={href}>
                 <Link
                   href={href}
-                  className={`relative text-sm font-medium tracking-wide transition-colors duration-200 pb-1
-                    ${isActive(href) ? "text-[#1A1A18]" : "text-[#7A7A72] hover:text-[#1A1A18]"}
-                  `}
+                  className={`relative text-sm font-medium tracking-wide transition-colors duration-200 pb-1 ${
+                    isActive(href) ? getActiveTextColor() : getTextColor()
+                  }`}
                   style={
-                    isActive(href)
+                    showUnderline() && isActive(href)
                       ? {
                           borderBottom: "2px solid #C9A96E",
                           paddingBottom: "2px",
@@ -76,17 +133,22 @@ export default function Navbar() {
             <li>
               <Link
                 href="/tours"
-                className="text-sm font-semibold tracking-widest uppercase px-5 py-2.5 rounded-sm transition-all duration-200"
+                className={`text-sm font-semibold tracking-widest uppercase px-5 py-2.5 rounded-sm transition-all duration-200 ${getButtonStyle()}`}
                 style={{
-                  background: "#1A1A18",
-                  color: "white",
                   letterSpacing: "0.08em",
                 }}
                 onMouseEnter={(e) => {
                   (e.currentTarget as HTMLElement).style.background = "#C9A96E";
+                  (e.currentTarget as HTMLElement).style.color = "white";
                 }}
                 onMouseLeave={(e) => {
-                  (e.currentTarget as HTMLElement).style.background = "#1A1A18";
+                  if (isHomePage && !scrolled) {
+                    (e.currentTarget as HTMLElement).style.background = "white";
+                    (e.currentTarget as HTMLElement).style.color = "#1A1A18";
+                  } else {
+                    (e.currentTarget as HTMLElement).style.background = "#1A1A18";
+                    (e.currentTarget as HTMLElement).style.color = "white";
+                  }
                 }}
               >
                 Book Now
@@ -96,7 +158,7 @@ export default function Navbar() {
 
           {/* Mobile toggle */}
           <button
-            className="md:hidden text-[#1A1A18] z-50"
+            className={`md:hidden z-50 transition-colors duration-200 ${getMobileIconColor()}`}
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle menu"
           >

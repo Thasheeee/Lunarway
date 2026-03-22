@@ -2,6 +2,8 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import Navbar from "../../../../components/navbar";
+import Foot from "../../../../components/footer";
 
 const CustomPackage = () => {
   const [formData, setFormData] = useState({
@@ -71,6 +73,7 @@ const CustomPackage = () => {
 
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      <Navbar/>
       {/* Header */}
       <section
         className="relative py-32 px-6 md:px-16 overflow-hidden"
@@ -163,8 +166,8 @@ const CustomPackage = () => {
                       value={formData.name}
                       onChange={handleChange}
                       required
-                      className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2"
-                      style={{ borderColor: "#EDE8DE", focusRing: "#C9A96E" }}
+                      className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#C9A96E]"
+                      style={{ borderColor: "#EDE8DE" }}
                       placeholder="John Doe"
                     />
                   </div>
@@ -374,6 +377,7 @@ const CustomPackage = () => {
           </div>
         </div>
       </section>
+      <Foot/>
     </main>
   );
 };

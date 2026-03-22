@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Navbar from "../../components/navbar";
 import Destinations from "../../components/slide";
@@ -9,6 +10,7 @@ import Foot from "../../components/footer";
 import Steps from "../../components/trip-steps";
 import Link from "next/link";
 import PackageCards from "../../components/packageCards";
+import Hls from "hls.js";
 
 const services = [
   {
@@ -62,14 +64,47 @@ const marqueeItems = [
 
 
 export default function Home() {
+  const videoRef = useRef<HTMLVideoElement | null>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    const hlsUrl = "https://vz-919f82ce-871.b-cdn.net/a107b64e-dd9d-46ef-a155-55b865e6fe53/playlist.m3u8";
+
+    if (Hls.isSupported()) {
+      const hls = new Hls();
+      hls.loadSource(hlsUrl);
+      hls.attachMedia(video);
+      
+      hls.on(Hls.Events.MANIFEST_PARSED, () => {
+        video.play().catch(err => console.log('Autoplay prevented:', err));
+      });
+
+      // Cleanup
+      return () => {
+        hls.destroy();
+      };
+    } else if (video.canPlayType("application/vnd.apple.mpegurl")) {
+      // Safari native HLS support
+      video.src = hlsUrl;
+      video.addEventListener('loadedmetadata', () => {
+        video.play().catch(err => console.log('Autoplay prevented:', err));
+      });
+    }
+  }, []);
+
+
+
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif" }}>
       <Navbar />
 
       {/* Cover image */}
-      <section className="relative h-screen flex items-end overflow-hidden">
+     <section className="relative flex items-end overflow-hidden" style={{ height: "94vh", minHeight: "50px" }}>
         <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none">
           <video
+            ref={videoRef}
             autoPlay
             muted
             loop
@@ -83,10 +118,7 @@ export default function Home() {
               height: "100%",
               pointerEvents: "none",
             }}
-          >
-             <source src="https://vz-919f82ce-871.b-cdn.net/a107b64e-dd9d-46ef-a155-55b865e6fe53/playlist.m3u8" type="application/x-mpegURL" />
-            Your browser does not support the video tag.
-          </video>
+          />
         </div>
 
         <div
@@ -375,3 +407,5 @@ export default function Home() {
     </main>
   )
 }
+
+

@@ -4,22 +4,22 @@ import Image from "next/image";
 
 const values = [
   {
-    icon: "🗺",
+    
     title: "Carefully Planned Itineraries",
     desc: "Well-structured journeys designed for comfort and smooth travel.",
   },
   {
-    icon: "💳",
+    
     title: "Transparent Pricing",
     desc: "Clear pricing with no hidden costs or surprises.",
   },
   {
-    icon: "⚙️",
+    
     title: "Flexible Travel Options",
     desc: "Adjust travel dates, hotels, and experiences to suit your needs.",
   },
   {
-    icon: "🤝",
+    
     title: "Dedicated Travel Support",
     desc: "Reliable assistance before and throughout your journey.",
   },
@@ -173,12 +173,7 @@ export default function JourneySection() {
                   (e.currentTarget as HTMLElement).style.boxShadow = "none";
                 }}
               >
-                <div
-                  className="text-3xl mb-6"
-                  style={{ filter: "grayscale(0.2)" }}
-                >
-                  {v.icon}
-                </div>
+               
                 <h3
                   className="font-semibold text-sm mb-3"
                   style={{ color: "#1A1A18", letterSpacing: "-0.01em" }}

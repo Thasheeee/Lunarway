@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Foot from "../../../../components/footer";
+import Navbar from "../../../../components/navbar";
 
 interface Package {
   id: number;
@@ -46,7 +48,7 @@ const InboundPackages = () => {
         "Unawatuna Beach",
         "Turtle Hatchery Visit",
       ],
-      image: "/food.jpg",
+      image: "/l2.jpg",
     },
     {
       id: 3,
@@ -75,7 +77,7 @@ const InboundPackages = () => {
         "Bird Watching Excursions",
         "Nature Photography Tours",
       ],
-      image: "/l1.jpg",
+      image: "/l4.jpg",
     },
     {
       id: 5,
@@ -89,7 +91,7 @@ const InboundPackages = () => {
         "Beach & Mountain Resorts",
         "Cultural Performances",
       ],
-      image: "/food.jpg",
+      image: "/l5.jpg",
       featured: true,
     },
     {
@@ -104,20 +106,16 @@ const InboundPackages = () => {
         "Pettah Markets",
         "Fine Dining Experiences",
       ],
-      image: "/l3.jpg",
+      image: "/l6.jpg",
     },
   ];
 
-  const categories = [
-    { id: "all", name: "All Packages" },
-    { id: "cultural", name: "Cultural" },
-    { id: "beach", name: "Beach & Coastal" },
-    { id: "nature", name: "Nature & Wildlife" },
-    { id: "city", name: "City Tours" },
-  ];
+ 
 
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      <Navbar/>
+
       {/* Header */}
       <section
         className="relative py-32 px-6 md:px-16 overflow-hidden"
@@ -161,28 +159,7 @@ const InboundPackages = () => {
       </section>
 
       {/* Category Filter */}
-      <section className="py-8 px-6 md:px-16" style={{ background: "#FAFAF7" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap gap-3">
-            {categories.map((cat) => (
-              <button
-                key={cat.id}
-                onClick={() => setSelectedCategory(cat.id)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  selectedCategory === cat.id
-                    ? "text-white shadow-lg"
-                    : "bg-white text-[#7A7A72] hover:bg-[#F5F0E8]"
-                }`}
-                style={{
-                  background: selectedCategory === cat.id ? "#C9A96E" : undefined,
-                }}
-              >
-                {cat.name}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+    
 
       {/* Packages Grid */}
       <section className="py-16 px-6 md:px-16" style={{ background: "#FAFAF7" }}>
@@ -304,7 +281,9 @@ const InboundPackages = () => {
             <span>→</span>
           </Link>
         </div>
+        
       </section>
+      <Foot/>
     </main>
   );
 };

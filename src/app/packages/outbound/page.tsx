@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
+import Foot from "../../../../components/footer";
+import Navbar from "../../../../components/navbar";
 
 interface Destination {
   id: number;
@@ -13,8 +15,9 @@ interface Destination {
   bestTime: string;
   duration: string;
   priceFrom: string;
+   slug: string
   image: string;
-  flag: string;
+ 
   featured?: boolean;
 }
 
@@ -23,39 +26,39 @@ const OutboundPackages = () => {
 
   const destinations: Destination[] = [
     {
-      id: 1,
+     id: 1,
       country: "Malaysia",
       region: "Southeast Asia",
       description: "Experience the perfect blend of modern cities, cultural heritage, and tropical beaches.",
       popularTours: [
-        "Kuala Lumpur City Tour",
-        "Langkawi Island Paradise",
-        "Penang Food & Heritage",
-        "Cameron Highlands Retreat",
+        "Guided Kuala Lumpur city tour",
+        "Visit to Batu Caves",
+        "Sunway Lagoon Theme Park",
+        "Cable Car experience",
       ],
       bestTime: "Dec - Feb",
-      duration: "5-7 Days",
-      priceFrom: "From LKR 120,000",
-      image: "/l1.jpg",
-      flag: "🇲🇾",
+      duration: "3 Nights | 4 Days",
+      priceFrom: "LKR 85,000",
+      image: "/malaysia.webp",
+      slug: "malaysia",
       featured: true,
     },
     {
-      id: 2,
+     id: 2,
       country: "Thailand",
       region: "Southeast Asia",
       description: "Discover stunning temples, vibrant street life, pristine beaches, and world-class cuisine.",
       popularTours: [
-        "Bangkok & Pattaya Delight",
-        "Phuket Beach Escape",
-        "Chiang Mai Cultural Tour",
-        "Krabi Island Hopping",
+        "Grand Palace & Wat Arun",
+        "Dream World Theme Park",
+        "Bangkok Street Food Tour",
+        "BTS Experience & Chinatown",
       ],
       bestTime: "Nov - Feb",
-      duration: "4-6 Days",
-      priceFrom: "From LKR 95,000",
-      image: "/food.jpg",
-      flag: "🇹🇭",
+      duration: "4 Nights | 5 Days",
+      priceFrom: "LKR 70,000",
+      image: "/thailand1.webp",
+      slug: "thailand",
       featured: true,
     },
     {
@@ -64,116 +67,45 @@ const OutboundPackages = () => {
       region: "Middle East",
       description: "Experience luxury, futuristic architecture, desert adventures, and world-class shopping.",
       popularTours: [
-        "Dubai City Highlights",
+        "Dubai City Tour & Burj Khalifa",
         "Desert Safari Adventure",
-        "Abu Dhabi Day Trip",
-        "Shopping Extravaganza",
+        "Miracle Garden Visit",
+        "Global Village Tour",
       ],
       bestTime: "Nov - Mar",
-      duration: "4-5 Days",
-      priceFrom: "From LKR 180,000",
-      image: "/l3.jpg",
-      flag: "🇦🇪",
+      duration: "4 Nights | 5 Days",
+      priceFrom: "LKR 160,000",
+      image: "/Dubai1.webp",
+      slug: "dubai",
       featured: true,
     },
+    
     {
       id: 4,
-      country: "Singapore",
+      country: "Myanmar",
       region: "Southeast Asia",
-      description: "A modern metropolis with lush gardens, diverse cuisine, and endless entertainment.",
+      description: "Ancient temples, royal capitals, and sacred landscapes await in this culturally rich destination.",
       popularTours: [
-        "Gardens by the Bay",
-        "Sentosa Island Fun",
-        "Universal Studios",
-        "Marina Bay Experience",
+        "Yangon & Golden Pagoda",
+        "Bagan Ancient Temples",
+        "Inle Lake Boat Tour",
+        "Mandalay Cultural Experience",
       ],
-      bestTime: "Feb - Apr",
-      duration: "3-5 Days",
-      priceFrom: "From LKR 140,000",
-      image: "/l1.jpg",
-      flag: "🇸🇬",
+      bestTime: "Nov - Feb",
+      duration: "9 Nights | 10 Days",
+      priceFrom: "Contact for pricing",
+      image: "/myanmar-pack.webp",
+      slug: "myanmar",
+     
     },
-    {
-      id: 5,
-      country: "Maldives",
-      region: "South Asia",
-      description: "Paradise islands with crystal-clear waters, luxury resorts, and unforgettable sunsets.",
-      popularTours: [
-        "Luxury Resort Stay",
-        "Snorkeling & Diving",
-        "Island Hopping Tour",
-        "Romantic Getaway Package",
-      ],
-      bestTime: "Nov - Apr",
-      duration: "4-7 Days",
-      priceFrom: "From LKR 250,000",
-      image: "/food.jpg",
-      flag: "🇲🇻",
-      featured: true,
-    },
-    {
-      id: 6,
-      country: "India",
-      region: "South Asia",
-      description: "Explore ancient monuments, diverse cultures, spiritual sites, and incredible cuisine.",
-      popularTours: [
-        "Golden Triangle Tour",
-        "Kerala Backwaters",
-        "Rajasthan Heritage",
-        "Goa Beach Vacation",
-      ],
-      bestTime: "Oct - Mar",
-      duration: "5-10 Days",
-      priceFrom: "From LKR 85,000",
-      image: "/l3.jpg",
-      flag: "🇮🇳",
-    },
-    {
-      id: 7,
-      country: "Vietnam",
-      region: "Southeast Asia",
-      description: "Stunning natural beauty, rich history, delicious street food, and warm hospitality.",
-      popularTours: [
-        "Ha Long Bay Cruise",
-        "Hanoi & Ho Chi Minh City",
-        "Mekong Delta Adventure",
-        "Hoi An Ancient Town",
-      ],
-      bestTime: "Feb - Apr",
-      duration: "6-8 Days",
-      priceFrom: "From LKR 110,000",
-      image: "/l1.jpg",
-      flag: "🇻🇳",
-    },
-    {
-      id: 8,
-      country: "Bali, Indonesia",
-      region: "Southeast Asia",
-      description: "Tropical paradise with stunning beaches, ancient temples, and vibrant culture.",
-      popularTours: [
-        "Ubud Cultural Tour",
-        "Beach Club Hopping",
-        "Temple & Rice Terrace",
-        "Volcano Sunrise Trek",
-      ],
-      bestTime: "Apr - Oct",
-      duration: "5-7 Days",
-      priceFrom: "From LKR 130,000",
-      image: "/food.jpg",
-      flag: "🇮🇩",
-      featured: true,
-    },
+   
   ];
 
-  const regions = [
-    { id: "all", name: "All Destinations" },
-    { id: "southeast", name: "Southeast Asia" },
-    { id: "middle-east", name: "Middle East" },
-    { id: "south-asia", name: "South Asia" },
-  ];
+
 
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif" }}>
+      <Navbar/>
       {/* Header */}
       <section
         className="relative py-32 px-6 md:px-16 overflow-hidden"
@@ -216,29 +148,7 @@ const OutboundPackages = () => {
         />
       </section>
 
-      {/* Region Filter */}
-      <section className="py-8 px-6 md:px-16" style={{ background: "#FAFAF7" }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="flex flex-wrap gap-3">
-            {regions.map((region) => (
-              <button
-                key={region.id}
-                onClick={() => setSelectedRegion(region.id)}
-                className={`px-6 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ${
-                  selectedRegion === region.id
-                    ? "text-white shadow-lg"
-                    : "bg-white text-[#7A7A72] hover:bg-[#F5F0E8]"
-                }`}
-                style={{
-                  background: selectedRegion === region.id ? "#B85C38" : undefined,
-                }}
-              >
-                {region.name}
-              </button>
-            ))}
-          </div>
-        </div>
-      </section>
+
 
       {/* Destinations Grid */}
       <section className="py-16 px-6 md:px-16" style={{ background: "#FAFAF7" }}>
@@ -266,10 +176,7 @@ const OutboundPackages = () => {
                       Popular
                     </div>
                   )}
-                  {/* Flag overlay */}
-                  <div className="absolute top-4 left-4 text-4xl">
-                    {dest.flag}
-                  </div>
+                  
                 </div>
 
                 {/* Content */}
@@ -371,6 +278,7 @@ const OutboundPackages = () => {
           </Link>
         </div>
       </section>
+      <Foot/>
     </main>
   );
 };
