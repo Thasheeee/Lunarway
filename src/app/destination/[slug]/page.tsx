@@ -5,6 +5,7 @@ import Navbar from "../../../../components/navbar";
 import Foot from "../../../../components/footer";
 import BookButton from "../../../../components/book-button";
 
+
 export default async function CountryPage({
   params,
 }: {

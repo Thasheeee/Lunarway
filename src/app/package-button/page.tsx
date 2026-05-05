@@ -1,12 +1,12 @@
 "use client";
 
-import { useRef, useState } from "react";
-import Link from "next/link";
-import Navbar from "../../../../components/navbar";
-import Foot from "../../../../components/footer";
+import { useState, useEffect } from "react";
 import { useSearchParams } from "next/navigation";
-import { CalendarOutlined } from "@ant-design/icons";
+import Link from "next/link";
+import Navbar from "../../../components/navbar";
+import Foot from "../../../components/footer";
 
+// Package details mapping
 const packageDetails: Record<string, { name: string; type: string }> = {
   malaysia: { name: "Malaysia", type: "outbound" },
   thailand: { name: "Thailand", type: "outbound" },
@@ -18,9 +18,8 @@ const CustomPackage = () => {
   const searchParams = useSearchParams();
   const packageSlug = searchParams.get("package");
   const isBookingFlow = !!packageSlug;
-  const departureDateRef = useRef<HTMLInputElement>(null);
-  const returnDateRef = useRef<HTMLInputElement>(null);
-
+  
+  // Get package details if this is a booking flow
   const packageInfo = packageSlug ? packageDetails[packageSlug] : null;
 
   const [formData, setFormData] = useState({
@@ -36,14 +35,13 @@ const CustomPackage = () => {
     specialRequests: "",
   });
 
-
   const [submitting, setSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<"idle" | "success" | "error">("idle");
   const [showSuccessPopup, setShowSuccessPopup] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
-
+    
     setFormData({
       ...formData,
       [name]: value,
@@ -61,7 +59,7 @@ const CustomPackage = () => {
 
     try {
       const endpoint = isBookingFlow ? "/api/book-package" : "/api/custom-package";
-
+      
       const response = await fetch(endpoint, {
         method: "POST",
         headers: {
@@ -110,8 +108,8 @@ const CustomPackage = () => {
 
   return (
     <main style={{ fontFamily: "'DM Sans', sans-serif" }}>
-      <Navbar />
-
+      <Navbar/>
+      
       {/* Success Popup */}
       {showSuccessPopup && (
         <div
@@ -153,7 +151,7 @@ const CustomPackage = () => {
               {isBookingFlow ? "Booking Confirmed!" : "Thank You!"}
             </h3>
             <p className="text-center mb-6" style={{ color: "#7A7A72" }}>
-              {isBookingFlow
+              {isBookingFlow 
                 ? `Your booking for ${packageInfo?.name} has been confirmed! A confirmation email has been sent to your inbox. We'll contact you within 24 hours with further details.`
                 : "Your custom package request has been submitted successfully. We'll contact you within 24 hours with a personalized quote."
               }
@@ -172,27 +170,17 @@ const CustomPackage = () => {
       )}
 
       <style jsx>{`
-  @keyframes slideIn {
-    from {
-      opacity: 0;
-      transform: translateY(-20px);
-    }
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .custom-date-input::-webkit-calendar-picker-indicator {
-    opacity: 0;
-    display: none;
-  }
-
-  .custom-date-input::-webkit-inner-spin-button,
-  .custom-date-input::-webkit-clear-button {
-    display: none;
-  }
-`}</style>
+        @keyframes slideIn {
+          from {
+            opacity: 0;
+            transform: translateY(-20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+      `}</style>
 
       {/* Header */}
       <section
@@ -230,7 +218,7 @@ const CustomPackage = () => {
             )}
           </h1>
           <p className="text-lg text-white/80 max-w-2xl">
-            {isBookingFlow
+            {isBookingFlow 
               ? `Complete the form below to confirm your booking for ${packageInfo?.name}. We'll send you a confirmation email and contact you within 24 hours.`
               : "Tell us about your travel dreams and we'll craft a personalized package tailored exactly to your preferences, budget, and schedule."
             }
@@ -246,7 +234,6 @@ const CustomPackage = () => {
           }}
         />
       </section>
-
 
       {/* Form Section */}
       <section className="py-20 px-6 md:px-16" style={{ background: "#FAFAF7" }}>
@@ -359,7 +346,7 @@ const CustomPackage = () => {
                 </h3>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  {/* HIDE Package Type and Destination for booking flow */}
+                  {/* Hide Package Type and Destination for booking flow */}
                   {!isBookingFlow && (
                     <>
                       <div>
@@ -394,8 +381,8 @@ const CustomPackage = () => {
                           className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#C9A96E] disabled:bg-gray-100 disabled:cursor-not-allowed"
                           style={{ borderColor: "#EDE8DE" }}
                           placeholder={
-                            formData.packageType === "inbound"
-                              ? "Sri Lanka (Auto-selected)"
+                            formData.packageType === "inbound" 
+                              ? "Sri Lanka (Auto-selected)" 
                               : "e.g., Maldives, Thailand"
                           }
                         />
@@ -407,69 +394,33 @@ const CustomPackage = () => {
                     <label className="block text-sm font-semibold mb-2" style={{ color: "#1A1A18" }}>
                       Departure Date *
                     </label>
-                    <div className="relative">
-                      <input
-                        ref={departureDateRef}
-                        type="date"
-                        name="departureDate"
-                        value={formData.departureDate}
-                        onChange={handleChange}
-                        required
-                        className="custom-date-input w-full px-4 py-3 pr-12 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#C9A96E]"
-                        style={{ borderColor: "#EDE8DE" }}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (departureDateRef.current?.showPicker) {
-                            departureDateRef.current.showPicker();
-                          } else {
-                            departureDateRef.current?.focus();
-                            departureDateRef.current?.click();
-                          }
-                        }}
-                        className="absolute right-4 top-1/2 -translate-y-1/2"
-                        style={{ color: "#7A7A72", fontSize: "18px" }}
-                      >
-                        <CalendarOutlined />
-                      </button>
-                    </div>
+                    <input
+                      type="date"
+                      name="departureDate"
+                      value={formData.departureDate}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#C9A96E]"
+                      style={{ borderColor: "#EDE8DE" }}
+                    />
                   </div>
 
                   <div>
                     <label className="block text-sm font-semibold mb-2" style={{ color: "#1A1A18" }}>
                       Return Date *
                     </label>
-                    <div className="relative">
-                      <input
-                        ref={returnDateRef}
-                        type="date"
-                        name="returnDate"
-                        value={formData.returnDate}
-                        onChange={handleChange}
-                        required
-                        className="custom-date-input w-full px-4 py-3 pr-12 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#C9A96E]"
-                        style={{ borderColor: "#EDE8DE" }}
-                      />
-                      <button
-                        type="button"
-                        onClick={() => {
-                          if (returnDateRef.current?.showPicker) {
-                            returnDateRef.current.showPicker();
-                          } else {
-                            returnDateRef.current?.focus();
-                            returnDateRef.current?.click();
-                          }
-                        }}
-                        className="absolute right-4 top-1/2 -translate-y-1/2"
-                        style={{ color: "#7A7A72", fontSize: "18px" }}
-                      >
-                        <CalendarOutlined />
-                      </button>
-                    </div>
+                    <input
+                      type="date"
+                      name="returnDate"
+                      value={formData.returnDate}
+                      onChange={handleChange}
+                      required
+                      className="w-full px-4 py-3 rounded-lg border focus:outline-none focus:ring-2 focus:ring-[#C9A96E]"
+                      style={{ borderColor: "#EDE8DE" }}
+                    />
                   </div>
 
-                  {/* HIDE Budget Range for booking flow */}
+                  {/* Hide Budget Range for booking flow */}
                   {!isBookingFlow && (
                     <div className="md:col-span-2">
                       <label className="block text-sm font-semibold mb-2" style={{ color: "#1A1A18" }}>
@@ -520,10 +471,10 @@ const CustomPackage = () => {
                     color: "white",
                   }}
                 >
-                  {submitting
-                    ? "Processing..."
-                    : isBookingFlow
-                      ? "Confirm Booking"
+                  {submitting 
+                    ? "Processing..." 
+                    : isBookingFlow 
+                      ? "Confirm Booking" 
                       : "Submit Package Request"
                   }
                 </button>
@@ -536,7 +487,6 @@ const CustomPackage = () => {
               </div>
             </form>
           </div>
-
 
           {/* Contact Info */}
           <div className="mt-12 text-center">
@@ -556,7 +506,7 @@ const CustomPackage = () => {
           </div>
         </div>
       </section>
-      <Foot />
+      <Foot/>
     </main>
   );
 };

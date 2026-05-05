@@ -1,11 +1,17 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function BookButton() {
+  const pathname = usePathname();
+  
+  // Extract slug from pathname (e.g., /packages/outbound/malaysia -> malaysia)
+  const slug = pathname.split('/').pop();
+
   return (
     <Link
-      href="/contact"
+      href={`/packages/custom?package=${slug}`}
       className="block w-full text-center text-sm font-semibold tracking-widest uppercase py-4 rounded-sm transition-all duration-200"
       style={{ background: "#1A1A18", color: "white" }}
       onMouseEnter={(e) => {
