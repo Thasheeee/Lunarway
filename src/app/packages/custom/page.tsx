@@ -150,11 +150,11 @@ const CustomPackage = () => {
               className="text-2xl font-semibold text-center mb-3"
               style={{ fontFamily: "'Cormorant Garamond', serif", color: "#1A1A18" }}
             >
-              {isBookingFlow ? "Booking Confirmed!" : "Thank You!"}
+              {isBookingFlow ? "Request Received!" : "Thank You!"}
             </h3>
             <p className="text-center mb-6" style={{ color: "#7A7A72" }}>
               {isBookingFlow
-                ? `Your booking for ${packageInfo?.name} has been confirmed! A confirmation email has been sent to your inbox. We'll contact you within 24 hours with further details.`
+                ? `Thank you for your interest in ${packageInfo?.name}. Our team will review your request and get in touch with you within 24 hours to discuss the details and next steps.`
                 : "Your custom package request has been submitted successfully. We'll contact you within 24 hours with a personalized quote."
               }
             </p>
